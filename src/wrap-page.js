@@ -1,26 +1,26 @@
+import { IntlContextProvider } from "./intl-context"
+import { IntlProvider } from "react-intl"
 import React from "react"
 import browserLang from "browser-lang"
 import { withPrefix } from "gatsby"
-import { IntlProvider } from "react-intl"
-import { IntlContextProvider } from "./intl-context"
 
 const preferDefault = m => (m && m.default) || m
 
 const polyfillIntl = language => {
   const locale = language.split("-")[0]
-  try {
-    if (!Intl.PluralRules) {
-      require("@formatjs/intl-pluralrules/polyfill")
-      require(`@formatjs/intl-pluralrules/dist/locale-data/${locale}`)
-    }
+  // try {
+  //   if (!Intl.PluralRules) {
+  //     require("@formatjs/intl-pluralrules/polyfill")
+  //     require(`@formatjs/intl-pluralrules/dist/locale-data/${locale}`)
+  //   }
 
-    if (!Intl.RelativeTimeFormat) {
-      require("@formatjs/intl-relativetimeformat/polyfill")
-      require(`@formatjs/intl-relativetimeformat/dist/locale-data/${locale}`)
-    }
-  } catch (e) {
-    throw new Error(`Cannot find react-intl/locale-data/${language}`)
-  }
+  //   if (!Intl.RelativeTimeFormat) {
+  //     require("@formatjs/intl-relativetimeformat/polyfill")
+  //     require(`@formatjs/intl-relativetimeformat/dist/locale-data/${locale}`)
+  //   }
+  // } catch (e) {
+  //   throw new Error(`Cannot find react-intl/locale-data/${language}`)
+  // }
 }
 
 const withIntlProvider = (intl) => children => {
